@@ -32,4 +32,8 @@ public class UserInputDto
     [MaxLength(50)]
     public string PassWord { get; set; } = string.Empty;
 
+    [Required]
+    [MinLength(2)]
+    [MaxLength(50)]
+    public string rule { get; set; }
 }

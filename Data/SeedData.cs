@@ -20,7 +20,8 @@ public static class SeedData
                 FirstName = "mahdi",
                 LastName = "pezeshkian",
                 Password = "admin",
-                EmailAddress = "admin@admin.com"
+                EmailAddress = "admin@admin.com",
+                rule = "admin"
             };
 
             context.Users.Add(user);

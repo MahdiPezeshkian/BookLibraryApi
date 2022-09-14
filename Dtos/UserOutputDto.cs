@@ -24,4 +24,20 @@ public class UserOutputDto
     [MaxLength(50)]
     public string LastName { get; set; } = string.Empty;
 
+    [Required]
+    [MinLength(2)]
+    [MaxLength(50)]
+    public string EmailAddress { get; set; }
+
+    [Required]
+    [MinLength(2)]
+    [MaxLength(50)]
+    public string Password { get; set; }
+
+    [Required]
+    [MinLength(2)]
+    [MaxLength(50)]
+    public string rule { get; set; }
+
+
 }

@@ -54,7 +54,7 @@ public class Context : DbContext
             .IsRequired();
 
         modelBuilder.Entity<UserEntity>()
-            .Property(property => property.Password)
+            .Property(property => property.rule)
             .IsRequired()
             .HasMaxLength(50);
         

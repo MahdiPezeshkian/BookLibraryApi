@@ -30,7 +30,9 @@ public class UserRepository
                 Id = user.Id,
                 UserName = user.UserName,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                rule = user.rule,
+                EmailAddress = user.EmailAddress
             });
         }
         
@@ -42,10 +44,11 @@ public class UserRepository
         UserEntity user = _dbUser.GetById(id);
         return new UserOutputDto()
         {
-            Id = user.Id,
             UserName = user.UserName,
             FirstName = user.FirstName,
-            LastName = user.LastName
+            LastName = user.LastName,
+            EmailAddress = user.EmailAddress,
+            rule = user.rule
         };
     }
 
@@ -55,7 +58,10 @@ public class UserRepository
         {
             UserName = user.UserName,
             FirstName = user.FirstName,
-            LastName = user.LastName
+            LastName = user.LastName,
+            EmailAddress = user.EmailAddress,
+            Password = user.PassWord,
+            rule = user.rule
         };
 
         _dbUser.InsertRow(userEntity);
