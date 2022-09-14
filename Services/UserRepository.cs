@@ -3,6 +3,7 @@ using BookLibraryApi.DataBaseContext;
 using Microsoft.EntityFrameworkCore;
 using BookLibraryApi.Models;
 using BookLibraryApi.Dtos;
+using BookLibraryApi.Hash;
 
 namespace BookLibraryApi.Repository;
 
@@ -11,11 +12,13 @@ public class UserRepository
     private GenericRepository<UserEntity> _dbUser;
     private BookRepository _bookRepository;
     private BookShelfRepository _bookShelfRepository;
-    public UserRepository(Context context , BookRepository bookRepository , BookShelfRepository bookShelfRepository)
+    private HashAlgorithm _hashAlgorithm;
+    public UserRepository(Context context , BookRepository bookRepository , BookShelfRepository bookShelfRepository , HashAlgorithm hashAlgorithm)
     {
         _dbUser = new GenericRepository<UserEntity>(context);
         _bookRepository = bookRepository;
         _bookShelfRepository = bookShelfRepository;
+        _hashAlgorithm = hashAlgorithm;
     }
 
     public IEnumerable<UserOutputDto> GetAllUsers()
@@ -60,7 +63,7 @@ public class UserRepository
             FirstName = user.FirstName,
             LastName = user.LastName,
             EmailAddress = user.EmailAddress,
-            Password = user.PassWord,
+            Password = _hashAlgorithm.Hash(user.PassWord),
             rule = user.rule
         };
 

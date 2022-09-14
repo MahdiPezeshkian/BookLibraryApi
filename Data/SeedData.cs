@@ -1,9 +1,11 @@
 using BookLibraryApi.DataBaseContext;
 using BookLibraryApi.Models;
+using BookLibraryApi.Hash;
 
 namespace BookLibraryApi.Data;
 public static class SeedData
 {
+    private static HashAlgorithm _hashAlgorithm = new HashAlgorithm();
     public static void PopulateDb(IApplicationBuilder app)
     {
         using var serviceScope = app.ApplicationServices.CreateScope();
@@ -14,17 +16,17 @@ public static class SeedData
     {
         if (!context.Users.Any())
         {
-            UserEntity user = new UserEntity()
+            UserEntity admin = new UserEntity()
             {
                 UserName = "stalker",
                 FirstName = "mahdi",
                 LastName = "pezeshkian",
-                Password = "admin",
+                Password = _hashAlgorithm.Hash("1234"),
                 EmailAddress = "admin@admin.com",
                 rule = "admin"
             };
 
-            context.Users.Add(user);
+            context.Users.Add(admin);
             context.SaveChanges();
         }
 

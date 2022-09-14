@@ -30,8 +30,6 @@ public class UserOutputDto
     public string EmailAddress { get; set; }
 
     [Required]
-    [MinLength(2)]
-    [MaxLength(50)]
     public string Password { get; set; }
 
     [Required]

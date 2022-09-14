@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using BookLibraryApi.Models;
-
+using BookLibraryApi.Hash;
 
 namespace BookLibraryApi.Dtos;
 
@@ -26,11 +26,9 @@ public class UserInputDto
     [MinLength(2)]
     [MaxLength(50)]
     public string EmailAddress { get; set; } = string.Empty;
-    
+
     [Required]
-    [MinLength(2)]
-    [MaxLength(50)]
-    public string PassWord { get; set; } = string.Empty;
+    public string PassWord{ get; set; }
 
     [Required]
     [MinLength(2)]
