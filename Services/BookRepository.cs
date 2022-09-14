@@ -74,9 +74,9 @@ public class BookRepository
         });
     }
 
-    public bool DeleteBookById(int id)
+    public void DeleteBookById(int id)
     {
-        return _dbBook.DeleteById(id);
+        _dbBook.DeleteById(id);
     }
 
 

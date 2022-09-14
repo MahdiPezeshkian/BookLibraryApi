@@ -31,29 +31,34 @@ public class GenericRepository<TEntity> where TEntity : class
         return _dbSet.Find(id);
     }
 
-    public bool DeleteById(object id)
+    public async void DeleteById(object id)
     {
         var getResult = GetById(id);
 
         if (getResult != null)
         {
             _dbSet.Remove(getResult);
-            _dbContext.SaveChanges();
-            return true;
         }
 
-        return false;
+        await SaveChanges();
     }
 
-    public virtual void InsertRow(TEntity obj)
+    public virtual async void InsertRow(TEntity obj)
     {
         _dbSet.Add(obj);
         _dbContext.SaveChanges();
+        await SaveChanges();
     }
     
-    public virtual void UpdateRow(TEntity obj)
+    public virtual async void UpdateRow(TEntity obj)
     {
         _dbSet.Update(obj);
-        _dbContext.SaveChanges();
+        await SaveChanges();
     }
+
+    private async Task<bool> SaveChanges()
+    {
+        _dbContext.SaveChanges();
+        return true;
+    } 
 }

@@ -66,7 +66,7 @@ public class UserController : ControllerBase
     public ActionResult DeleteUserById(int userId)
     {
         return Ok(
-            new JsonResult(new { Deleted = _userRepository.DeleteUserById(userId) })
+            new JsonResult(new { Deleted = true })
         );
     }
 

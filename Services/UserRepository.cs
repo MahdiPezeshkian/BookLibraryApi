@@ -13,7 +13,7 @@ public class UserRepository
     private BookRepository _bookRepository;
     private BookShelfRepository _bookShelfRepository;
     private HashAlgorithm _hashAlgorithm;
-    public UserRepository(Context context , BookRepository bookRepository , BookShelfRepository bookShelfRepository , HashAlgorithm hashAlgorithm)
+    public UserRepository(Context context, BookRepository bookRepository, BookShelfRepository bookShelfRepository, HashAlgorithm hashAlgorithm)
     {
         _dbUser = new GenericRepository<UserEntity>(context);
         _bookRepository = bookRepository;
@@ -38,7 +38,7 @@ public class UserRepository
                 EmailAddress = user.EmailAddress
             });
         }
-        
+
         return userDtoList;
     }
 
@@ -70,9 +70,9 @@ public class UserRepository
         _dbUser.InsertRow(userEntity);
     }
 
-    public bool DeleteUserById(int id)
+    public void DeleteUserById(int id)
     {
-        return _dbUser.DeleteById(id);
+        _dbUser.DeleteById(id);
     }
 
 
@@ -80,7 +80,7 @@ public class UserRepository
     {
 
         List<BookShelfOutputDto> bookShelfOutputDtos = _bookShelfRepository.GetBookShelfByUserId(userId);
-        
+
         return new UserBookShelves()
         {
             user = GetUserById(userId),

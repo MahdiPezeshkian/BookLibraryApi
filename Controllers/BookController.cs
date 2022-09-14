@@ -48,7 +48,7 @@ public class BookController : ControllerBase
     public ActionResult DeleteBookByID(int bookId)
     {
         return Ok(
-            new JsonResult(new { Deleted = _bookRepository.DeleteBookById(bookId) })
+            new JsonResult(new { Deleted = true })
         );
     }
 }
