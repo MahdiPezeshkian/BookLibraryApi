@@ -59,3 +59,4 @@ C:\Users\Dell\Desktop\BookLibraryApi\obj\Debug\net6.0\refint\BookLibraryApi.dll
 C:\Users\Dell\Desktop\BookLibraryApi\obj\Debug\net6.0\BookLibraryApi.pdb
 C:\Users\Dell\Desktop\BookLibraryApi\obj\Debug\net6.0\BookLibraryApi.genruntimeconfig.cache
 C:\Users\Dell\Desktop\BookLibraryApi\obj\Debug\net6.0\ref\BookLibraryApi.dll
+C:\Users\Dell\Desktop\BookLibraryApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

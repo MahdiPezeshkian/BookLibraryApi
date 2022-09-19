@@ -23,7 +23,7 @@ public static class SeedData
                 LastName = "pezeshkian",
                 Password = _hashAlgorithm.Hash("1234"),
                 EmailAddress = "admin@admin.com",
-                rule = "admin"
+                role = "admin"
             };
 
             context.Users.Add(admin);

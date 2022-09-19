@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using BookLibraryApi.Models;
 using BookLibraryApi.Repository;
 using BookLibraryApi.Dtos;
+using BookLibraryApi.Hash;
+using BookLibraryApi.Generatetoken;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookLibraryApi.Controllers;
 
@@ -12,13 +15,18 @@ public class UserController : ControllerBase
 {
     private UserRepository _userRepository;
     private BookShelfRepository _bookShelfRepository;
+    private HashAlgorithm _hashAlgorithm;
+    private TokenGenerator _tokenGenerator;
 
-    public UserController(UserRepository userRepository, BookShelfRepository bookShelfRepository)
+    public UserController(UserRepository userRepository, BookShelfRepository bookShelfRepository ,HashAlgorithm hashAlgorithm, TokenGenerator tokenGenerator)
     {
         _userRepository = userRepository;
         _bookShelfRepository = bookShelfRepository;
+        _hashAlgorithm = hashAlgorithm;
+        _tokenGenerator = tokenGenerator;
     }
 
+    [Authorize(Roles = "admin")]
     [HttpGet]
     public ActionResult<UserOutputDto> GetUsers()
     {
@@ -68,6 +76,33 @@ public class UserController : ControllerBase
         return Ok(
             new JsonResult(new { Deleted = true })
         );
+    }
+
+    [HttpPost("signUp")]
+    public ActionResult SignUp(UserInputDto user)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest();
+
+        _userRepository.AddUser(user);
+        return Created("api/user/", user);
+    }
+
+    [HttpPost("logIn")]
+    public ActionResult LogIn(string userName , string passWord)
+    {
+        var user = _userRepository.GetUserEntityByUsername(userName);
+
+        if (user == null)
+            return NotFound();
+        
+        if (user.Password != _hashAlgorithm.Hash(passWord))
+            return Conflict();
+        
+        if (_userRepository.CheckUserNamePassword(userName , passWord))
+            return Conflict();
+
+        return Ok(_tokenGenerator.GetToken(user));
     }
 
     [HttpDelete("deleteBookFromUsershelf/{shelfId}")]

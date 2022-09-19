@@ -33,5 +33,5 @@ public class UserInputDto
     [Required]
     [MinLength(2)]
     [MaxLength(50)]
-    public string rule { get; set; }
+    public string role { get; set; }
 }

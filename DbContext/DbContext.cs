@@ -6,7 +6,6 @@ namespace BookLibraryApi.DataBaseContext;
 
 public class Context : DbContext
 {
-
     public Context(DbContextOptions options) : base(options)
     {
 
@@ -54,7 +53,7 @@ public class Context : DbContext
             .IsRequired();
 
         modelBuilder.Entity<UserEntity>()
-            .Property(property => property.rule)
+            .Property(property => property.role)
             .IsRequired()
             .HasMaxLength(50);
         

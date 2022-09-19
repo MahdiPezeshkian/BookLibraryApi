@@ -8,5 +8,5 @@ public class UserEntity
     public string LastName { get; set; }
     public string EmailAddress { get; set; }
     public string Password { get; set; }
-    public string rule { get; set; }
+    public string role { get; set; }
 }

@@ -34,7 +34,7 @@ public class UserRepository
                 UserName = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                rule = user.rule,
+                role = user.role,
                 EmailAddress = user.EmailAddress
             });
         }
@@ -51,10 +51,32 @@ public class UserRepository
             FirstName = user.FirstName,
             LastName = user.LastName,
             EmailAddress = user.EmailAddress,
-            rule = user.rule
+            role = user.role
         };
     }
 
+    public UserEntity GetUserEntityById(int id)
+    {
+        return _dbUser.GetById(id); 
+    }
+
+    public UserEntity GetUserEntityByUsername(string userName)
+    {
+        return _dbUser.Get(user => user.UserName == userName).FirstOrDefault();
+    }
+
+    public UserOutputDto GetUserByUsername(string userName)
+    {
+        UserEntity user = _dbUser.Get(user => user.UserName == userName).FirstOrDefault();
+        return new UserOutputDto()
+        {
+            UserName = user.UserName,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            EmailAddress = user.EmailAddress,
+            role = user.role
+        };
+    }
     public void AddUser(UserInputDto user)
     {
         UserEntity userEntity = new UserEntity()
@@ -64,7 +86,7 @@ public class UserRepository
             LastName = user.LastName,
             EmailAddress = user.EmailAddress,
             Password = _hashAlgorithm.Hash(user.PassWord),
-            rule = user.rule
+            role = user.role
         };
 
         _dbUser.InsertRow(userEntity);
@@ -75,6 +97,15 @@ public class UserRepository
         _dbUser.DeleteById(id);
     }
 
+    public bool CheckUserNamePassword(string username , string passWord)
+    {
+        UserEntity user = _dbUser.Get(user => user.UserName == username).FirstOrDefault();
+
+        if (passWord == user.Password)
+            return true;
+
+        return false;
+    }
 
     public UserBookShelves GetUserShelves(int userId)
     {

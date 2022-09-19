@@ -40,25 +40,19 @@ public class GenericRepository<TEntity> where TEntity : class
             _dbSet.Remove(getResult);
         }
 
-        await SaveChanges();
+        await _dbContext.SaveChangesAsync();
     }
 
     public virtual async void InsertRow(TEntity obj)
     {
         _dbSet.Add(obj);
         _dbContext.SaveChanges();
-        await SaveChanges();
+        await _dbContext.SaveChangesAsync();
     }
     
     public virtual async void UpdateRow(TEntity obj)
     {
         _dbSet.Update(obj);
-        await SaveChanges();
+        await _dbContext.SaveChangesAsync();
     }
-
-    private async Task<bool> SaveChanges()
-    {
-        _dbContext.SaveChanges();
-        return true;
-    } 
 }
