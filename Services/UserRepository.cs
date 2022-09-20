@@ -51,7 +51,8 @@ public class UserRepository
             FirstName = user.FirstName,
             LastName = user.LastName,
             EmailAddress = user.EmailAddress,
-            role = user.role
+            role = user.role, 
+            Id = user.Id
         };
     }
 

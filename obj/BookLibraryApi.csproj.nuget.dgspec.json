@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\Desktop\\BookLibraryApi\\BookLibraryApi.csproj": {}
+    "C:\\Users\\Dell\\Documents\\BookLibraryApi\\BookLibraryApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\Desktop\\BookLibraryApi\\BookLibraryApi.csproj": {
+    "C:\\Users\\Dell\\Documents\\BookLibraryApi\\BookLibraryApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\Desktop\\BookLibraryApi\\BookLibraryApi.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\Documents\\BookLibraryApi\\BookLibraryApi.csproj",
         "projectName": "BookLibraryApi",
-        "projectPath": "C:\\Users\\Dell\\Desktop\\BookLibraryApi\\BookLibraryApi.csproj",
+        "projectPath": "C:\\Users\\Dell\\Documents\\BookLibraryApi\\BookLibraryApi.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\Desktop\\BookLibraryApi\\obj\\",
+        "outputPath": "C:\\Users\\Dell\\Documents\\BookLibraryApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

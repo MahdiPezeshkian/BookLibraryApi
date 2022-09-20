@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XBO7Ds35cyfIJ7hfRLNzIozy94K/9zgjKcPJPHxhR5Wzg9Y/rAEF8eAE1388/zFmuzPzi7cyIdS8n422CCRt3Q==",
+  "dgSpecHash": "jAviM4GUVe6oytVB3C4T6dorMhuIHR+0kOAHKfOwYtmQ61UkBqss3vO3PUVNdojVBt0QaXQXa1JT+srEAHxTJg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dell\\Desktop\\BookLibraryApi\\BookLibraryApi.csproj",
+  "projectFilePath": "C:\\Users\\Dell\\Documents\\BookLibraryApi\\BookLibraryApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.9\\microsoft.aspnetcore.authentication.jwtbearer.6.0.9.nupkg.sha512",
